@@ -37,7 +37,7 @@ def GetActions(CurrentState):
     #for base case, initialized with root as last visited 
 
     # if this is the first pick the last_visited is none
-    if not CurrentState.last_visited:
+    if CurrentState.last_visited is None:
         return list(available_nodes)
 
     # see if current node has any path to other available nodes
@@ -56,7 +56,7 @@ def ApplyAction(CurrentState, Action):
 
     # check if this is the first node to visit
     # if this is the case, add the action as the first node visited from the cycle
-    if not CurrentState.first_visited:
+    if CurrentState.first_visited is None:
         CurrentState.first_visited = Action
 
     State2 = State(

@@ -90,6 +90,7 @@ def IsTerminal(CurrentState):
 
     # try to get a next state, if none exists then dead end so it is terminal
     next_state = GetNextStates(CurrentState)
+
     if not next_state:
         return True
     else:

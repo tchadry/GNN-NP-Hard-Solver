@@ -19,6 +19,7 @@ visited=set()
 n=8
 first  = random.randint(0,n-1)
 print("Initial node is: ", first)
+
 #our game parameters
 #first test case: octagon directed cycle with first node connected to the second, which is connected to the third, and so on until the cycle
 #Expected output: depends on the first node but assuming for example first node was 0  - [1,2,3,4,5,6,7,0]

@@ -145,21 +145,29 @@ class MCTS:
     #now we can perform the simulation step of the MCTS
     def Simulation(self,Node):
 
-        print("Simulation on")
+
 
         #get current state and node
         currentState=Node.state
         currentLevel=self.Node_level(Node)
 
         end=self.game.IsTerminal(currentState)
-
+        
         while(end==False):
-            state = game.GetNextStates(currentState)
+            children=[]
+            
+            states = self.game.GetNextStates(currentState)
+            for state in states:
+                children.append(state)
+
+            i = np.random.randint(0, len(children))
+            currentState = children[i]
             currentLevel+=1
+           
+            end = self.game.IsTerminal(currentState)
+          
 
-            end = self.game.IsTerminal(state)
-
-        return game.GetResult(currentState)
+        return self.game.GetResult(currentState)
 
     def Backprop(self,Node,result):
         current = Node
@@ -195,7 +203,7 @@ class MCTS:
         return Node.sputc
 
     #tested different values for iteration, 8000 gave us a fast running time and consistent results 
-    def Run(self, MAXITER = 8000):
+    def Run(self, MAXITER = 5000):
         #run over max iteration
         for i in range(MAXITER):
 
@@ -205,7 +213,7 @@ class MCTS:
 
             #do simulation and backpropagation on the second node only if the first was
             #not a terminal state
-            if(second==True ):
+            if(second):
                 result = self.Simulation(second)
                 self.Backprop(second,result)
 

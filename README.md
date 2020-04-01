@@ -1,4 +1,4 @@
-# NP-Hard problems solver with no doman knowledge using Graph Neural Networks and Monte Carlo Tree Search
+# NP-Hard problems solver with no domain knowledge using Graph Neural Networks and Monte Carlo Tree Search
 
 The approach includes reducing the problems into a MDP structure, and so we expect to be able to solve any problem which can be represented in such form. We also want to explore forms of representing the graph structure, trying to use GNNs. Finally, for the optimization routine, we will use Monte Carlo Tree Search.
 
